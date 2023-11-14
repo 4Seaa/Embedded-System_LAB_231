@@ -93,18 +93,14 @@ int main(void)
   // loop
   while (1)
   {
-	// set output 0
-	HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 0);
-	HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
-	HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
-	// delay 1000ms
-	HAL_Delay(1000);
-	// set output 1
-	HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
-	HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
+	// Turn LED3 on
 	HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 1);
 	// delay 1000ms
-	HAL_Delay(1000);
+	HAL_Delay(2000);
+	// Turn LED3 off
+	HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
+	// delay 1000ms
+	HAL_Delay(4000);
 
     /* USER CODE END WHILE */
 
