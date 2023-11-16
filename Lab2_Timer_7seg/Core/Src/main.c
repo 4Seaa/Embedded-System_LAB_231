@@ -218,8 +218,17 @@ void ledScan_1Hz() {
 
 // setTimer(10)
 void ledScan_25Hz() {
-    led7_Scan()
+    led7_Scan();
 }
+
+// setTimer(1)
+void ledScan_100Hz() {
+    count_led_scan = (count_led_scan + 1) % 2;
+    if (count_led_scan == 0) {
+        led7_Scan();
+    }
+}
+
 /* USER CODE END 4 */
 
 /**
