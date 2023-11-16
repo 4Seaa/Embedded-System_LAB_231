@@ -1057,7 +1057,7 @@ void trafficLight() {
  8000938:	b2d2      	uxtb	r2, r2
  800093a:	4b1d      	ldr	r3, [pc, #116]	; (80009b0 <trafficLight+0x98>)
  800093c:	701a      	strb	r2, [r3, #0]
-    if (count < 100) {
+    if (count < 100) /* < 5s*/ {
  800093e:	4b1c      	ldr	r3, [pc, #112]	; (80009b0 <trafficLight+0x98>)
  8000940:	781b      	ldrb	r3, [r3, #0]
  8000942:	2b63      	cmp	r3, #99	; 0x63
@@ -1085,7 +1085,7 @@ void trafficLight() {
     }
 }
  8000964:	e022      	b.n	80009ac <trafficLight+0x94>
-    } else if (count < 160) {
+    } else if (count < 160) /*from 5s to 8s*/ {
  8000966:	4b12      	ldr	r3, [pc, #72]	; (80009b0 <trafficLight+0x98>)
  8000968:	781b      	ldrb	r3, [r3, #0]
  800096a:	2b9f      	cmp	r3, #159	; 0x9f
