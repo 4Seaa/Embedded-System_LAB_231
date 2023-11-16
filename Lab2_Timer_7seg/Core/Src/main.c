@@ -176,14 +176,10 @@ uint8_t count_led_debug = 0;
 uint8_t count_led_Y0 = 0;
 uint8_t count_led_Y1 = 0;
 
-// Constants for time conversion
-const uint8_t SECONDS_IN_HOUR   = 72000;
-const uint8_t SECONDS_IN_MINUTE = 1200;
-const uint8_t SECONDS_IN_COLON  = 20;
-
 // Declare counters for digital clock simulation
 uint8_t count_hour = 0;
 uint8_t count_minute = 0;
+uint8_t count_second = 0;
 uint8_t count_colon = 0;
 
 void test_LedDebug(){
@@ -221,32 +217,33 @@ void test_7seg(){
 
 void digiClock_sim()
 {
-    // Update counters
-    count_hour = (count_hour + 1) % (24 * SECONDS_IN_HOUR);
-    count_minute = (count_minute + 1) % SECONDS_IN_HOUR;
-    count_colon = (count_colon + 1) % SECONDS_IN_COLON;
+	// 1 sec = 20
+	// 1 min = 1200
+	// 24 min = 28800
+	count_colon = (count_colon + 1) % 20;
+	if (count_colon == 0)
+	{
+		led7_SetColon(1);
+		count_second = (count_second + 1) % 60;
+		if (count_second == 0)
+		{
+			count_minute = (count_minute + 1) % 60;
+			if (count_minute == 0)
+			{
+				count_hour = (count_hour + 1) % 24;
+			}
+		}
+	}
+	else if (count_colon == 10)
+	{
+		led7_SetColon(0);
+	}
 
-    // Update colon
-    if (count_colon == 0 || count_colon == 10)
-    {
-        led7_SetColon(count_colon == 0);
-    }
+	led7_SetDigit(count_hour / 10, 0, 0);
+	led7_SetDigit(count_hour % 10, 1, 0);
 
-    // Update hours
-    if (count_hour % SECONDS_IN_HOUR == 0)
-    {
-        int hours = count_hour / SECONDS_IN_HOUR;
-        led7_SetDigit(hours / 10, 0, 0);
-        led7_SetDigit(hours % 10, 1, 0);
-    }
-
-    // Update minutes
-    if (count_minute % SECONDS_IN_MINUTE == 0)
-    {
-        int minutes = count_minute / SECONDS_IN_MINUTE;
-        led7_SetDigit(minutes / 10, 2, 0);
-        led7_SetDigit(minutes % 10, 3, 0);
-    }
+	led7_SetDigit(count_minute / 10, 2, 0);
+	led7_SetDigit(count_minute % 10, 3, 0);
 }
 
 /* USER CODE END 4 */
