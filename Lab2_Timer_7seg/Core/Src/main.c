@@ -62,6 +62,12 @@ void test_LedY0();
 void test_LedY1();
 
 void test_7seg();
+
+void LedDebug();
+
+void LedY0();
+
+void LedY1();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
