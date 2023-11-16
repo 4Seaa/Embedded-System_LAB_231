@@ -57,6 +57,7 @@ void test_LedDebug();
 void test_LedY0();
 void test_LedY1();
 void test_7seg();
+void digiClock_sim();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -181,9 +182,9 @@ const uint8_t SECONDS_IN_MINUTE = 1200;
 const uint8_t SECONDS_IN_COLON  = 20;
 
 // Declare counters for digital clock simulation
-uint8_t count_hour = 0
-Uint8_t count_minute = 0
-Uint8_t count_colon = 0
+uint8_t count_hour = 0;
+uint8_t count_minute = 0;
+uint8_t count_colon = 0;
 
 void test_LedDebug(){
 	count_led_debug = (count_led_debug + 1)%20;
@@ -228,7 +229,7 @@ void digiClock_sim()
     // Update colon
     if (count_colon == 0 || count_colon == 10)
     {
-        LED7_SetColon(count_colon == 0);
+        led7_SetColon(count_colon == 0);
     }
 
     // Update hours
