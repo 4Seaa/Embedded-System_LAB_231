@@ -52,7 +52,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			}
 		}
 		// 1ms interrupt here
-		led7_Scan();
+//		led7_Scan();
 	}
 }
 

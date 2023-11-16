@@ -106,10 +106,10 @@ int main(void)
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
 	  // main task, every 50ms
-	  test_LedDebug();
-	  test_LedY0();
-	  test_LedY1();
-	  test_7seg();
+//	  test_LedDebug();
+//	  test_LedY0();
+//	  test_LedY1();
+//	  test_7seg();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -174,6 +174,7 @@ void system_init(){
 uint8_t count_led_debug = 0;
 uint8_t count_led_Y0 = 0;
 uint8_t count_led_Y1 = 0;
+uint8_t count_led_scan = 0;
 
 void test_LedDebug(){
 	count_led_debug = (count_led_debug + 1)%20;
@@ -206,6 +207,18 @@ void test_7seg(){
 	led7_SetDigit(5, 1, 0);
 	led7_SetDigit(4, 2, 0);
 	led7_SetDigit(7, 3, 0);
+}
+
+void ledScan_1Hz() {
+    count_led_scan = (count_led_scan + 1) % 5;
+    if (count_led_scan == 0) {
+        led7_Scan();
+    }
+}
+
+// setTimer(10)
+void ledScan_25Hz() {
+    led7_Scan()
 }
 /* USER CODE END 4 */
 
