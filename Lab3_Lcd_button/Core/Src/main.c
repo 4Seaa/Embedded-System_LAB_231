@@ -63,6 +63,7 @@ void test_LedY1();
 void test_7seg();
 void test_button();
 void test_lcd();
+void button_Scan();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
