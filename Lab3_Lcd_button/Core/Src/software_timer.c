@@ -2,7 +2,7 @@
  * software_timer.c
  *
  *  Created on: Sep 24, 2023
- *      Author: HaHuyen
+ *      Author: Hai
  */
 
 #include "software_timer.h"

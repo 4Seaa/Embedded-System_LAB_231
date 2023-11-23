@@ -23,6 +23,7 @@
 #include "tim.h"
 #include "gpio.h"
 #include "fsmc.h"
+#include "fsm.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -105,7 +106,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   system_init();
   lcd_Clear(WHITE);
-  test_lcd();
+//  test_lcd();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,8 +115,16 @@ int main(void)
   {
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
-	  button_Scan();
-	  test_button();
+	  // button_Scan();
+	  // test_button();
+
+    // top();
+
+    trafficLight();
+
+    // test_LedY0();
+
+    // test_7seg();
 
     /* USER CODE END WHILE */
 
@@ -178,6 +187,7 @@ void system_init(){
 	  button_init();
 	  lcd_init();
 	  setTimer2(50);
+    top_init();
 }
 
 uint8_t count_led_debug = 0;
@@ -193,6 +203,12 @@ void test_LedDebug(){
 
 void test_LedY0(){
 	count_led_Y0 = (count_led_Y0+ 1)%100;
+
+  if (count_led_Y0 % 20 == 0)  {
+    led7_SetDigit((5 - (count_led_Y0 / 20)) / 10, 0, 0);
+    led7_SetDigit((5 - (count_led_Y0 / 20)) % 10, 1, 0);
+  }
+
 	if(count_led_Y0 > 40){
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
 	} else {
