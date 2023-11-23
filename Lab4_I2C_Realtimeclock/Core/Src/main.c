@@ -372,7 +372,7 @@ void time_mode()
   check_execute_alarm();
 }
 
-void edit_mode_()
+void edit_mode()
 {
   int *edit_vars[] = {&edit_temp_hour, &edit_temp_min, &edit_temp_sec,
                       &edit_temp_day, &edit_temp_date, &edit_temp_month, &edit_temp_year};
