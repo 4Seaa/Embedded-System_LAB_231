@@ -374,10 +374,23 @@ void time_mode()
 
 void edit_mode()
 {
+  // int *edit_vars[] = {&edit_temp_hour, &edit_temp_min, &edit_temp_sec,
+  //                     &edit_temp_day, &edit_temp_date, &edit_temp_month, &edit_temp_year};
+
+  static int button_processed = 0; // Add a static variable to track button processing
   int *edit_vars[] = {&edit_temp_hour, &edit_temp_min, &edit_temp_sec,
                       &edit_temp_day, &edit_temp_date, &edit_temp_month, &edit_temp_year};
 
-  check_button_increase_edit_var(edit_vars[count_edit_var], count_edit_var);
+  if (button_count[3] == 1 && !button_processed)
+  {
+    check_button_increase_edit_var(edit_vars[count_edit_var], count_edit_var);
+    button_processed = 1; // Set the flag to indicate that the button has been processed
+  }
+  else if (button_count[3] == 0)
+  {
+    button_processed = 0; // Reset the flag when the button is released
+  }
+
   check_button_change_mode();
   check_button_change_edit_var();
   check_button_save_edit();
