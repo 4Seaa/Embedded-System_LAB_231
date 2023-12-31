@@ -1,5 +1,4 @@
 "./Core/Src/button.o"
-"./Core/Src/fsm.o"
 "./Core/Src/fsmc.o"
 "./Core/Src/gpio.o"
 "./Core/Src/lcd.o"
