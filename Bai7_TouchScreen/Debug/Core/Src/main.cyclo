@@ -1,0 +1,7 @@
+../Core/Src/main.c:89:5:main	2
+../Core/Src/main.c:160:6:SystemClock_Config	3
+../Core/Src/main.c:200:6:system_init	1
+../Core/Src/main.c:210:6:test_LedDebug	2
+../Core/Src/main.c:217:9:isButtonClear	6
+../Core/Src/main.c:223:6:touchProcess	7
+../Core/Src/main.c:254:6:Error_Handler	1

@@ -1,0 +1,9 @@
+../Core/Src/game.c:33:6:snake_init	2
+../Core/Src/game.c:48:9:isStart	6
+../Core/Src/game.c:54:6:update_fsm_state	4
+../Core/Src/game.c:70:6:top	27
+../Core/Src/game.c:152:6:eat_prey	4
+../Core/Src/game.c:167:6:snake_move	2
+../Core/Src/game.c:178:6:UI	5
+../Core/Src/game.c:223:6:isNavigated	18
+../Core/Src/game.c:240:6:handle_snake_dir	6
